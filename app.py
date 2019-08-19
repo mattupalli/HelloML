@@ -16,4 +16,4 @@ def getVal():
     #return render_template('pass.html', n=name)
 
 if __name__ == '__main__':
-    app.Run(debug=True)
+    app.Run()
