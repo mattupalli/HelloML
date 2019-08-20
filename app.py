@@ -4,18 +4,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    #return render_template('index.html')
-    return '<h1>Deployed</h1>'
+    return render_template('index.html')
 
-#@app.route('/', methods=['POST'])
-#def getVal():
- #   return '<h1>Deployed</h1>'
-    #name= request.form['name']
+@app.route('/', methods=['POST'])
+def getVal():
+    name= request.form['name']
     #converts string into int and multiplies by 2
-    #n= (int(name))*2
-    #converts the multiples number into string back beacause this fuction apparently can only retrun a string
-    #return str(n)
+    n= (int(name))*2
+    #converts the multiples number into string back because this fuction apparently can only retrun a string
+    return str(n)
     #return render_template('pass.html', n=name)
 
-#if __name__ == '__main__':
-#   app.Run(debug=True)
+if __name__ == '__main__':
+    app.Run(debug=True)
