@@ -11,7 +11,7 @@ def getVal():
     name= request.form['name']
     #converts string into int and multiplies by 2
     n= (int(name))*2
-    #converts the multiples number into string back because this fuction apparently can only retrun a string
+    #converts the multipled number into string because this fuction apparently can only retrun a string
     return str(n)
     #return render_template('pass.html', n=name)
 
