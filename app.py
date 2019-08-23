@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from selenium import webdriver
-from sklearn.datasets import load_iris
-from sklearn.neighbors import KNeighborsClassifier
+import sklearn
 import pickle
 
 app = Flask(__name__)
@@ -23,8 +22,7 @@ def getVal():
     n3=(int(name3))
     model = pickle.load(open('saved_model.pkl','rb'))
     a = int(model.predict([[n,n1,n2,n3]]))
-    b = str(a)
-    return b
+    return render_template('index.html',num=a)
 
 if __name__ == '__main__':
     app.Run(debug=True)

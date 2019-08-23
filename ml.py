@@ -5,21 +5,10 @@ iris = load_iris()
 
 x = iris.data
 y = iris.target
-#print(x.shape)
-#print(y.shape)
-#print(y.shape)
 
-#instantiating k meains algorithm
 knn = KNeighborsClassifier(n_neighbors=1)
-#print(knn)
+
 knn.fit(x,y)
 
 filename = 'saved_model.pkl'
 pickle.dump(knn,open(filename,'wb'))
-
-
-model_saved = pickle.load(open(filename,'rb'))
-#a = float(model_saved.predict([[3,4,5,5]]))
-#print(a)
-
-
