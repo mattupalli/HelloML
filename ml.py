@@ -10,12 +10,16 @@ y = iris.target
 #print(y.shape)
 
 #instantiating k meains algorithm
-#instantiating k meains algorithm
 knn = KNeighborsClassifier(n_neighbors=1)
 #print(knn)
 knn.fit(x,y)
-model = pickle.dump(knn)
-saved_model = pickle.loads(model)
-#n = input("Enter a number: ")
-a = float(saved_model.predict([[1,3,4,5]]))
-print(a)
+
+filename = 'saved_model.pkl'
+pickle.dump(knn,open(filename,'wb'))
+
+
+model_saved = pickle.load(open(filename,'rb'))
+#a = float(model_saved.predict([[3,4,5,5]]))
+#print(a)
+
+

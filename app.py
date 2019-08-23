@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from selenium import webdriver
 from sklearn.datasets import load_iris
 from sklearn.neighbors import KNeighborsClassifier
+import pickle
 
 app = Flask(__name__)
 
@@ -20,29 +21,10 @@ def getVal():
     n1=(int(name1))
     n2=(int(name2))
     n3=(int(name3))
-    #converts the multipled number into string because this fuction apparently can only retrun a string
-    #return str(n)
-    #return render_template('pass.html', n=name)
-    iris = load_iris()
-
-    x = iris.data
-    y = iris.target
-    #print(x.shape)
-    #print(y.shape)
-    #print(y.shape)
-
-    #instantiating k meains algorithm
-    knn = KNeighborsClassifier(n_neighbors=1)
-    #print(knn)
-    knn.fit(x,y)
-    #n = input("Enter a number: ")
-    a = float(knn.predict([[n1,n2,n3,n]]))
-    if a==2:
-        return "iris"
-    elif a==1:
-        return "iris again"
-    else:
-        return "no iris"
+    model = pickle.load(open('saved_model.pkl','rb'))
+    a = int(model.predict([[n,n1,n2,n3]]))
+    b = str(a)
+    return b
 
 if __name__ == '__main__':
     app.Run(debug=True)
